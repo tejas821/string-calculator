@@ -40,8 +40,8 @@ A simple string calculator that can add numbers provided in a string format. Thi
 ## Usage
 
 To use the string calculator, import the `StringCalculator` class from the `StringCalculator.ts` file and create an instance. Then, you can use the `add` method to add numbers provided in a string format.
-
-```typescript
+```
+typescript
 import { StringCalculator } from './StringCalculator';
 
 const stringCalculator = new StringCalculator();
@@ -51,7 +51,9 @@ console.log(stringCalculator.add("1,2,3")); // Output: 6
 ## Running Tests
 
 This project includes test cases to ensure the correctness of the StringCalculator class. To run the tests, execute the following command:
-```npm test
+```
+npm test
+
 ```
 
 ## Test Cases
