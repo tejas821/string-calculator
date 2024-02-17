@@ -9,17 +9,21 @@ var StringCalculator = /** @class */ (function () {
             return 0;
         }
         // Default delimiter is comma and newline
-        var delimiterRegex = /,|\n/;
-        var delimiter = delimiterRegex.source;
+        var delimiterRegex = /[,\n]/;
         // Check if custom delimiter is provided
         if (numbers.startsWith("//")) {
-            var customDelimiterMatch = numbers.match(/^\/\/(.*)\n/);
+            var customDelimiterMatch = numbers.match(/^\/\/\[?(.*?)\]?\n/);
             if (customDelimiterMatch) {
-                delimiter = customDelimiterMatch[1];
+                var customDelimiters = customDelimiterMatch[1].split('][').map(function (delimiter) {
+                    // Escape special characters for regex
+                    return delimiter.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                });
+                var customDelimiterPattern = customDelimiters.join('|');
+                delimiterRegex = new RegExp(customDelimiterPattern + '|\\n');
                 numbers = numbers.substring(customDelimiterMatch[0].length);
             }
         }
-        var numberArray = numbers.split(new RegExp(delimiter));
+        var numberArray = numbers.split(delimiterRegex);
         var sum = 0;
         var negatives = [];
         for (var _i = 0, numberArray_1 = numberArray; _i < numberArray_1.length; _i++) {
