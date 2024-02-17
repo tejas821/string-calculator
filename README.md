@@ -31,8 +31,10 @@ A simple string calculator that can add numbers provided in a string format. Thi
 1. Clone the repository:
     git clone `https://github.com/tejas821/string-calculator.git`
 2. Install dependencies:
-    ```cd string-calculator
-    npm install```
+    ```
+    cd string-calculator
+    npm install
+    ```
 
 
 ## Usage
