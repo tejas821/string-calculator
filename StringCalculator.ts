@@ -18,5 +18,23 @@ export class StringCalculator {
 
         const numberArray = numbers.split(new RegExp(delimiter));
         
+        let sum = 0;
+        const negatives:number[] = [];
+
+        for (const numStr of numberArray) {
+            const num = parseInt(numStr);
+            if (num < 0) {
+                negatives.push(num);
+            }
+            if (num < 1000) {
+                sum += num;
+            }
+        }
+
+        if (negatives.length > 0) {
+            throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
+        }
+
+        return sum;
     }
 }
