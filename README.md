@@ -80,6 +80,4 @@ This project includes test cases to ensure the correctness of the StringCalculat
 - Should handle input with multiple custom delimiters containing special characters
 
 
-
-
-Feel free to customize this README file according to your preferences and project requirements.
+You are welcome to tailor this README to align with the unique needs and specifications of your project.
