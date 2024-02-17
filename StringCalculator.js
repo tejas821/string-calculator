@@ -28,7 +28,10 @@ var StringCalculator = /** @class */ (function () {
         var negatives = [];
         for (var _i = 0, numberArray_1 = numberArray; _i < numberArray_1.length; _i++) {
             var numStr = numberArray_1[_i];
-            var num = parseInt(numStr);
+            var num = parseFloat(numStr); // Parse as float instead of integer
+            if (isNaN(num)) { // Check if parsed number is NaN
+                continue; // Ignore invalid numbers
+            }
             if (num < 0) {
                 negatives.push(num);
             }

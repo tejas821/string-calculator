@@ -26,7 +26,10 @@ export class StringCalculator {
         const negatives:number[] = [];
 
         for (const numStr of numberArray) {
-            const num = parseInt(numStr);
+            const num = parseFloat(numStr); // Parse as float instead of integer
+            if (isNaN(num)) { // Check if parsed number is NaN
+                continue; // Ignore invalid numbers
+            }
             if (num < 0) {
                 negatives.push(num);
             }

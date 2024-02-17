@@ -71,5 +71,31 @@ describe("StringCalculator", () => {
     it("should handle input with whitespace characters as delimiters", () => {
         expect(stringCalculator.add("1\n\t2,3")).toBe(6);
     });
+    it("should handle input with repeated delimiters", () => {
+        expect(stringCalculator.add("1,,2,,,3")).toBe(6);
+    });
 
+    it("should handle input with floating point numbers", () => {
+        expect(stringCalculator.add("1.5,2.5,3.5")).toBe(7.5);
+    });
+
+    it("should handle input with non-numeric characters", () => {
+        expect(stringCalculator.add("1,2,three,4")).toBe(7);
+    });
+
+    it("should handle input with large numbers", () => {
+        expect(stringCalculator.add("1000000000000000000,2000000000000000000")).toBe(0);
+    });
+
+    it("should handle input with custom delimiter consisting of multiple characters", () => {
+        expect(stringCalculator.add("//[***]\n1***2***3")).toBe(6);
+    });
+
+    it("should handle input with multiple custom delimiters of varying lengths", () => {
+        expect(stringCalculator.add("//[*][%][###]\n1*2%3###4")).toBe(10);
+    });
+
+    it("should handle input with multiple custom delimiters containing special characters", () => {
+        expect(stringCalculator.add("//[@#][!!][$$]\n1@#2!!3$$4")).toBe(10);
+    });
 });
